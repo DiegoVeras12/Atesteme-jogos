@@ -1,0 +1,260 @@
+/* Container principal do card - GARANTE que nada vaza */
+.game-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative; /* IMPORTANTE: mantém os elementos dentro */
+  overflow: hidden; /* IMPEDE que qualquer coisa saia do card */
+  min-height: 320px; /* Altura mínima para não quebrar layout */
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+}
+
+/* Efeito ao passar o mouse */
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Container do ícone - agora com tamanho fixo */
+.game-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+  position: relative; /* Mantém o ícone dentro */
+  z-index: 1; /* Garante que fica acima do fundo */
+  flex-shrink: 0; /* Impede que o círculo diminua */
+}
+
+/* Efeito quando passa o mouse no CARD, não no container */
+.game-card:hover .game-icon-container {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* O ícone emoji dentro do círculo */
+.game-icon-emoji {
+  font-size: 2.0rem;
+  animation: bounce 2s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+  position: relative;
+  z-index: 2;
+}
+
+/* Título do jogo - GARANTE que não fica atrás do ícone */
+.game-card h3 {
+  font-size: 1.3rem;
+  margin: 15px 0 10px 0;
+  color: #333;
+  position: relative;
+  z-index: 1;
+  clear: both;
+}
+
+/* Descrição do jogo */
+.game-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1; /* Empurra os elementos seguintes para baixo */
+}
+
+/* Categoria do jogo */
+.game-category {
+  display: inline-block;
+  background: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pontos do jogo */
+.game-points {
+  display: inline-block;
+  background: linear-gradient(135deg, #F9CA24, #F0932B);
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+/* ANIMAÇÕES - Mais suaves e SEM vazar */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Animação de quicar - MAIS SUAVE */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(3deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* CORES DIFERENTES POR CATEGORIA */
+.game-card[data-category="Trivia"] .game-icon-container {
+  background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+}
+
+.game-card[data-category="Memória"] .game-icon-container {
+  background: linear-gradient(135deg, #4ECDC4, #44B39D);
+}
+
+.game-card[data-category="Reflexo"] .game-icon-container {
+  background: linear-gradient(135deg, #F9CA24, #F0932B);
+}
+
+.game-card[data-category="Lógica"] .game-icon-container {
+  background: linear-gradient(135deg, #6C5CE7, #5A4BD1);
+}
+
+.game-card[data-category="Perguntas"] .game-icon-container {
+  background: linear-gradient(135deg, #FDA7DF, #E0569B);
+}
+
+.game-card[data-category="Matemática"] .game-icon-container {
+  background: linear-gradient(135deg, #00CEC9, #00A8A4);
+}
+
+.game-card[data-category="Atenção"] .game-icon-container {
+  background: linear-gradient(135deg, #FFB8B8, #FF7675);
+}
+
+.game-card[data-category="Raciocínio"] .game-icon-container {
+  background: linear-gradient(135deg, #A29BFE, #6C5CE7);
+}
+
+.game-card[data-category="Percepção"] .game-icon-container {
+  background: linear-gradient(135deg, #74B9FF, #0984E3);
+}
+
+.game-card[data-category="Português"] .game-icon-container {
+  background: linear-gradient(135deg, #55EFC4, #00B894);
+}
+
+.game-card[data-category="Cálculo"] .game-icon-container {
+  background: linear-gradient(135deg, #FAB1A0, #E17055);
+}
+
+.game-card[data-category="Estratégia"] .game-icon-container {
+  background: linear-gradient(135deg, #DFE6E9, #B2BEC3);
+}
+
+/* Efeito de brilho - AGORA SEM VAZAR */
+.game-icon-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 50%;
+  pointer-events: none; /* IMPEDE que interfira no clique */
+}
+
+.game-card:hover .game-icon-container::after {
+  opacity: 1;
+  animation: shine 1s ease;
+}
+
+@keyframes shine {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Efeito de onda ao passar o mouse - MAIS DISCRETO */
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(100,108,255,0.1) 0%, rgba(100,108,255,0) 80%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.game-card:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+/* Efeito de vibração no ícone - MAIS SUAVE */
+.game-card:hover .game-icon-emoji {
+  animation: vibrate 0.2s ease-in-out;
+}
+
+@keyframes vibrate {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+/* CORREÇÃO para grid responsivo */
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
